@@ -1,0 +1,38 @@
+{
+  "name": "mach-vscode",
+  "displayName": "mach-vscode",
+  "description": "Mach language support for VSCode",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "mach",
+        "aliases": [
+          "Mach",
+          "mach"
+        ],
+        "extensions": [
+          ".mach"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mach",
+        "scopeName": "source.mach",
+        "path": "./syntaxes/mach.tmLanguage.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octalide/mach-vscode"
+  }
+}
