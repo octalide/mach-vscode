@@ -42,7 +42,7 @@
             "patterns": [
                 {
                     "name": "keyword.control.mach",
-                    "match": "\\b(use|ext|def|fun|val|var|if|or|for|brk|cnt|ret|asm)\\b"
+                    "match": "\\b(mod|use|ext|def|fun|val|var|if|or|for|brk|cnt|ret|asm)\\b"
                 }
             ]
         },
