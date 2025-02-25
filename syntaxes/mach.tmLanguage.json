@@ -42,7 +42,7 @@
             "patterns": [
                 {
                     "name": "keyword.control.mach",
-                    "match": "\\b(mod|use|ext|def|fun|val|var|if|or|for|brk|cnt|ret|asm)\\b"
+                    "match": "\\b(mod|use|ext|def|fun|val|var|if|or|for|brk|cnt|ret|asm|try|pass|fail|struct|union)\\b"
                 }
             ]
         },
@@ -50,7 +50,7 @@
             "patterns": [
                 {
                     "name": "storage.type.mach",
-                    "match": "\\b(u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|uni|void|nil)\\b"
+                    "match": "\\b(u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|void|zero|nil)\\b"
                 }
             ]
         },
@@ -96,10 +96,16 @@
                 },
                 {
                     "name": "entity.name.function.definition.mach",
-                    "match": "\\bfun\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+                    "match": "\\b(fun)\\s+([a-zA-Z_][a-zA-Z0-9_]*)(?:<([a-zA-Z_][a-zA-Z0-9_]*)>)?\\s*\\(",
                     "captures": {
                         "1": {
+                            "name": "keyword.control.mach"
+                        },
+                        "2": {
                             "name": "entity.name.function.mach"
+                        },
+                        "3": {
+                            "name": "entity.name.generic.mach"
                         }
                     }
                 },
