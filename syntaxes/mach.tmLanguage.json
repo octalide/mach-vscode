@@ -42,7 +42,7 @@
             "patterns": [
                 {
                     "name": "keyword.control.mach",
-                    "match": "\\b(mod|use|ext|def|fun|val|var|if|or|for|brk|cnt|ret|asm|try|pass|fail|struct|union)\\b"
+                    "match": "\\b(mod|use|ext|def|fun|val|var|if|or|for|brk|cnt|ret|asm|try|pass|fail|struct|union|new)\\b"
                 }
             ]
         },
@@ -50,7 +50,7 @@
             "patterns": [
                 {
                     "name": "storage.type.mach",
-                    "match": "\\b(u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|void|zero|nil)\\b"
+                    "match": "\\b(u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|void|nil)\\b"
                 }
             ]
         },
