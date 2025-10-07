@@ -1,12 +1,26 @@
-# Mach VSCode Extension
+# Mach VS Code Extension
 
-This extension provides VSCode support for the Mach language. Features include:
-- Syntax highlighting
+Official editor support for the Mach programming language while it stabilises.
 
-Note that this extension (and the Mach language itself) is under heavy development and is subject to change.
+## Features
+- Rich syntax highlighting kept in sync with the latest compiler keywords, intrinsics, and operators.
+- Line comments with `#` including toggle/comment actions.
+- Bracket, brace, and quote auto-closing/surrounding pairs aligned with the Mach parser.
+- Basic function/type/constant highlighting for declarations and built-in aliases.
 
-# Note to self:
+More advanced language services (hover, go-to-definition, formatting, etc.) are planned as the compiler API matures.
 
-commit then:
+## Getting Started
+1. Install the extension from the Marketplace or load this workspace in VS Code.
+2. Open a `.mach` source file. Highlighting and comment toggling work out-of-the-box.
+3. Pair with the `cmach` toolchain from `mach-c` for builds and diagnostics.
 
-`vsce publish [major|minor]`
+## Contributing
+- Report syntax gaps or highlighting bugs in the [mach-c](https://github.com/octalide/mach-c) tracker.
+- When publishing, remember to bump the version in `package.json` and run:
+
+```bash
+vsce publish [major|minor|patch]
+```
+
+This project is pre-release software; breaking grammar changes may occur as the language evolves.

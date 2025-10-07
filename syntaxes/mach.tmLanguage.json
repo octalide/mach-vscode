@@ -1,56 +1,23 @@
 {
     "scopeName": "source.mach",
     "patterns": [
-        {
-            "include": "#comments"
-        },
-        {
-            "include": "#keywords"
-        },
-        {
-            "include": "#types"
-        },
-        {
-            "include": "#strings"
-        },
-        {
-            "include": "#numbers"
-        },
-        {
-            "include": "#characters"
-        },
-        {
-            "include": "#functions"
-        },
-        {
-            "include": "#identifiers"
-        },
-        {
-            "include": "#operators"
-        }
+        { "include": "#comments" },
+        { "include": "#strings" },
+        { "include": "#characters" },
+        { "include": "#numbers" },
+        { "include": "#keywords" },
+        { "include": "#types" },
+        { "include": "#intrinsics" },
+        { "include": "#declarations" },
+        { "include": "#operators" },
+        { "include": "#identifiers" }
     ],
     "repository": {
         "comments": {
             "patterns": [
                 {
-                    "name": "comment.line.hash.mach",
+                    "name": "comment.line.number-sign.mach",
                     "match": "#.*$"
-                }
-            ]
-        },
-        "keywords": {
-            "patterns": [
-                {
-                    "name": "keyword.control.mach",
-                    "match": "\\b(mod|use|ext|def|fun|val|var|if|or|for|brk|cnt|ret|asm|try|pass|fail|struct|union|new)\\b"
-                }
-            ]
-        },
-        "types": {
-            "patterns": [
-                {
-                    "name": "storage.type.mach",
-                    "match": "\\b(u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|str|void|nil)\\b"
                 }
             ]
         },
@@ -59,7 +26,16 @@
                 {
                     "name": "string.quoted.double.mach",
                     "begin": "\"",
-                    "end": "\""
+                    "end": "\"",
+                    "beginCaptures": {
+                        "0": { "name": "punctuation.definition.string.begin.mach" }
+                    },
+                    "endCaptures": {
+                        "0": { "name": "punctuation.definition.string.end.mach" }
+                    },
+                    "patterns": [
+                        { "include": "#escape" }
+                    ]
                 }
             ]
         },
@@ -68,7 +44,24 @@
                 {
                     "name": "constant.character.mach",
                     "begin": "'",
-                    "end": "'"
+                    "end": "'",
+                    "beginCaptures": {
+                        "0": { "name": "punctuation.definition.char.begin.mach" }
+                    },
+                    "endCaptures": {
+                        "0": { "name": "punctuation.definition.char.end.mach" }
+                    },
+                    "patterns": [
+                        { "include": "#escape" }
+                    ]
+                }
+            ]
+        },
+        "escape": {
+            "patterns": [
+                {
+                    "name": "constant.character.escape.mach",
+                    "match": "\\\\(?:[\\\"'0ntr])"
                 }
             ]
         },
@@ -76,55 +69,79 @@
             "patterns": [
                 {
                     "name": "constant.numeric.mach",
-                    "match": "\\b(0x[0-9A-Fa-f_]+|0b[01_]+|0o[0-7_]+|\\d+(_*\\d+)*\\.?\\d*)\\b"
+                    "match": "\\b(?:0[xX][0-9A-Fa-f_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?)\\b"
                 }
             ]
         },
-        "functions": {
+        "keywords": {
             "patterns": [
                 {
-                    "name": "entity.name.function.declaration.mach",
-                    "match": "\\b(def|ext)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*:\\s*fun\\b",
-                    "captures": {
-                        "1": {
-                            "name": "keyword.control.mach"
-                        },
-                        "2": {
-                            "name": "entity.name.function.mach"
-                        }
-                    }
+                    "name": "storage.modifier.mach",
+                    "match": "\\bpub\\b"
                 },
                 {
-                    "name": "entity.name.function.definition.mach",
-                    "match": "\\b(fun)\\s+([a-zA-Z_][a-zA-Z0-9_]*)(?:<([a-zA-Z_][a-zA-Z0-9_]*)>)?\\s*\\(",
-                    "captures": {
-                        "1": {
-                            "name": "keyword.control.mach"
-                        },
-                        "2": {
-                            "name": "entity.name.function.mach"
-                        },
-                        "3": {
-                            "name": "entity.name.generic.mach"
-                        }
-                    }
+                    "name": "keyword.declaration.mach",
+                    "match": "\\b(?:use|ext|def|val|var|fun|str|uni)\\b"
                 },
                 {
-                    "name": "entity.name.function.call.mach",
-                    "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
-                    "captures": {
-                        "1": {
-                            "name": "entity.name.function.call.mach"
-                        }
-                    }
+                    "name": "keyword.control.mach",
+                    "match": "\\b(?:if|or|for|brk|cnt|ret|asm)\\b"
+                },
+                {
+                    "name": "constant.language.mach",
+                    "match": "\\bnil\\b"
                 }
             ]
         },
-        "identifiers": {
+        "types": {
             "patterns": [
                 {
-                    "name": "variable.other.mach",
-                    "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+                    "name": "storage.type.primitive.mach",
+                    "match": "\\b(?:u8|u16|u32|u64|i8|i16|i32|i64|f16|f32|f64|ptr)\\b"
+                },
+                {
+                    "name": "support.type.alias.mach",
+                    "match": "\\b(?:bool|string|char)\\b"
+                }
+            ]
+        },
+        "intrinsics": {
+            "patterns": [
+                {
+                    "name": "support.function.intrinsic.mach",
+                    "match": "\\b(?:len|size_of|align_of|offset_of|type_of|va_count|va_arg)\\b"
+                }
+            ]
+        },
+        "declarations": {
+            "patterns": [
+                {
+                    "name": "meta.definition.function.mach",
+                    "match": "\\b(?:pub\\s+)?fun\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*\\(",
+                    "captures": {
+                        "1": { "name": "entity.name.function.mach" }
+                    }
+                },
+                {
+                    "name": "meta.declaration.type.mach",
+                    "match": "\\b(?:pub\\s+)?(?:str|uni)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+                    "captures": {
+                        "1": { "name": "entity.name.type.mach" }
+                    }
+                },
+                {
+                    "name": "meta.declaration.alias.mach",
+                    "match": "\\b(?:pub\\s+)?def\\s+([A-Za-z_][A-Za-z0-9_]*)\\b",
+                    "captures": {
+                        "1": { "name": "entity.name.type.mach" }
+                    }
+                },
+                {
+                    "name": "meta.declaration.binding.mach",
+                    "match": "\\b(?:pub\\s+)?(?:val|var)\\s+([A-Za-z_][A-Za-z0-9_]*)\\b",
+                    "captures": {
+                        "1": { "name": "variable.other.definition.mach" }
+                    }
                 }
             ]
         },
@@ -132,7 +149,15 @@
             "patterns": [
                 {
                     "name": "keyword.operator.mach",
-                    "match": "\\+|\\-|\\*|\\/|%|==|!=|<|<=|>|>=|&&|\\|\\||!|~|@|\\?"
+                    "match": "==|!=|<=|>=|<<|>>|&&|\\|\\||::|\\+|-|\\*|/|%|=|<|>|!|~|@|\\?|\\.\\.\\."
+                }
+            ]
+        },
+        "identifiers": {
+            "patterns": [
+                {
+                    "name": "variable.other.mach",
+                    "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b"
                 }
             ]
         }

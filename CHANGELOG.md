@@ -6,4 +6,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-- Initial release
+### Added
+- Updated syntax grammar to match current Mach keywords, intrinsics, literals, and operators.
+- Documented available editor features in the README.
+
+### Changed
+- Refined auto-closing pairs and comment configuration to mirror the compiler.
