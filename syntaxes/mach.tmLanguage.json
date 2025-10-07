@@ -48,23 +48,7 @@
             "patterns": [
                 {
                     "name": "string.quoted.double.mach",
-                    "begin": "\"",
-                    "end": "\"",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.string.begin.mach"
-                        }
-                    },
-                    "endCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.string.end.mach"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "include": "#escape"
-                        }
-                    ]
+                    "match": "\"(?:\\\\.|[^\"\\])*\""
                 }
             ]
         },
@@ -72,31 +56,7 @@
             "patterns": [
                 {
                     "name": "constant.character.mach",
-                    "begin": "'",
-                    "end": "'",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.char.begin.mach"
-                        }
-                    },
-                    "endCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.char.end.mach"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "include": "#escape"
-                        }
-                    ]
-                }
-            ]
-        },
-        "escape": {
-            "patterns": [
-                {
-                    "name": "constant.character.escape.mach",
-                    "match": "\\\\(?:[\\\"'0ntr])"
+                    "match": "'(?:\\\\.|[^'\\])'"
                 }
             ]
         },
@@ -136,7 +96,30 @@
                 },
                 {
                     "name": "support.type.alias.mach",
-                    "match": "\\b(?:bool|string|char)\\b"
+                    "match": "::\\s*(?!(?:u8|u16|u32|u64|i8|i16|i32|i64|f16|f32|f64|ptr)\\b)([A-Za-z_][A-Za-z0-9_]*)",
+                    "captures": {
+                        "1": {
+                            "name": "support.type.alias.mach"
+                        }
+                    }
+                },
+                {
+                    "name": "meta.type.annotation.mach",
+                    "match": "(:)\\s*(?:\\*\\s*)*(?:\\[\\]\\s*)*(?!(?:u8|u16|u32|u64|i8|i16|i32|i64|f16|f32|f64|ptr)\\b)([A-Za-z_][A-Za-z0-9_]*)",
+                    "captures": {
+                        "2": {
+                            "name": "support.type.alias.mach"
+                        }
+                    }
+                },
+                {
+                    "name": "meta.type.return.mach",
+                    "match": "\\bfun\b[^\\{\n]*\\)\\s*(?:\\*\\s*)*(?:\\[\\]\\s*)*(?!(?:u8|u16|u32|u64|i8|i16|i32|i64|f16|f32|f64|ptr)\\b)([A-Za-z_][A-Za-z0-9_]*)",
+                    "captures": {
+                        "1": {
+                            "name": "support.type.alias.mach"
+                        }
+                    }
                 }
             ]
         },
