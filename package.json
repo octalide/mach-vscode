@@ -10,6 +10,7 @@
   "categories": [
     "Programming Languages"
   ],
+  "main": "./extension.js",
   "contributes": {
     "languages": [
       {
@@ -30,7 +31,26 @@
         "scopeName": "source.mach",
         "path": "./syntaxes/mach.tmLanguage.json"
       }
-    ]
+    ],
+    "commands": [
+      {
+        "command": "mach.restartServer",
+        "title": "Mach: Restart Language Server"
+      }
+    ],
+    "configuration": {
+      "title": "Mach",
+      "properties": {
+        "mach.lspPath": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to the mach-lsp executable. Leave empty to use the sibling mach-lsp build in this workspace."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
   },
   "repository": {
     "type": "git",

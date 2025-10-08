@@ -15,6 +15,21 @@ More advanced language services (hover, go-to-definition, formatting, etc.) are 
 2. Open a `.mach` source file. Highlighting and comment toggling work out-of-the-box.
 3. Pair with the `cmach` toolchain from `mach-c` for builds and diagnostics.
 
+## Language server integration
+
+The extension now launches the experimental `mach-lsp` server on demand.
+
+1. Build the sibling repository:
+	```bash
+	cd ../mach-lsp
+	make
+	```
+2. Open this `mach-vscode` folder in VS Code and launch the extension (F5) or install it from a packaged `.vsix`.
+3. The extension looks for `../mach-lsp/out/bin/mach-lsp` by default. Override the binary path via the `mach.lspPath` setting if you keep the server elsewhere.
+4. Use the **Mach: Restart Language Server** command from the palette after rebuilding the server.
+
+Set `mach.trace.server` to `verbose` in user settings to inspect the JSON-RPC traffic while debugging the language server.
+
 ## Contributing
 - Report syntax gaps or highlighting bugs in the [mach-c](https://github.com/octalide/mach-c) tracker.
 - When publishing, remember to bump the version in `package.json` and run:
