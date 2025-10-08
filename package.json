@@ -2,7 +2,7 @@
   "name": "mach-vscode",
   "displayName": "Mach",
   "description": "Mach language support for VSCode",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "octalide",
   "engines": {
     "vscode": "^1.95.0"
