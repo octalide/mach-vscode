@@ -5,9 +5,6 @@
             "include": "#comments"
         },
         {
-            "include": "#strings"
-        },
-        {
             "include": "#characters"
         },
         {
@@ -135,7 +132,7 @@
             "patterns": [
                 {
                     "name": "meta.definition.function.mach",
-                    "match": "\\b(?:pub\\s+)?fun\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*\\(",
+                    "match": "\\b(?:pub\\s+)?fun\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(?:<(?:(?:[^<>]|<[^<>]*>)+)>)?\\s*\\(",
                     "captures": {
                         "1": {
                             "name": "entity.name.function.mach"
@@ -175,7 +172,7 @@
             "patterns": [
                 {
                     "name": "meta.function.call.mach",
-                    "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\b(?=\\s*\\()",
+                    "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\b(?=\\s*(?:<(?:(?:[^<>]|<[^<>]*>)+)>)?\\s*\\())",
                     "captures": {
                         "1": {
                             "name": "entity.name.function.call.mach"
@@ -184,7 +181,7 @@
                 },
                 {
                     "name": "meta.function.call.mach",
-                    "match": "(?<=\\.)([A-Za-z_][A-Za-z0-9_]*)\\b(?=\\s*\\()",
+                    "match": "(?<=\\.)([A-Za-z_][A-Za-z0-9_]*)\\b(?=\\s*(?:<(?:(?:[^<>]|<[^<>]*>)+)>)?\\s*\\())",
                     "captures": {
                         "1": {
                             "name": "entity.name.function.call.mach"
