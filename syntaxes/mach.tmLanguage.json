@@ -2,6 +2,9 @@
     "scopeName": "source.mach",
     "patterns": [
         {
+            "include": "#preprocessor"
+        },
+        {
             "include": "#comments"
         },
         {
@@ -20,6 +23,9 @@
             "include": "#intrinsics"
         },
         {
+            "include": "#use-statements"
+        },
+        {
             "include": "#declarations"
         },
         {
@@ -33,11 +39,42 @@
         }
     ],
     "repository": {
+        "preprocessor": {
+            "patterns": [
+                {
+                    "name": "meta.preprocessor.conditional.mach",
+                    "match": "^\\s*(#@(?:if|or|end))\\b.*$",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.preprocessor.mach"
+                        }
+                    }
+                },
+                {
+                    "name": "meta.preprocessor.symbol.mach",
+                    "match": "^\\s*(#@symbol)\\s*(\\()\\s*(\"[^\"]*\")\\s*(\\))",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.preprocessor.mach"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.preprocessor.mach"
+                        },
+                        "3": {
+                            "name": "string.quoted.double.mach"
+                        },
+                        "4": {
+                            "name": "punctuation.definition.preprocessor.mach"
+                        }
+                    }
+                }
+            ]
+        },
         "comments": {
             "patterns": [
                 {
                     "name": "comment.line.number-sign.mach",
-                    "match": "#.*$"
+                    "match": "#(?!@).*$"
                 }
             ]
         },
@@ -73,7 +110,7 @@
                 },
                 {
                     "name": "keyword.declaration.mach",
-                    "match": "\\b(?:use|ext|def|val|var|fun|str|uni)\\b"
+                    "match": "\\b(?:ext|def|val|var|fun|str|uni)\\b"
                 },
                 {
                     "name": "keyword.control.mach",
@@ -125,6 +162,40 @@
                 {
                     "name": "support.function.intrinsic.mach",
                     "match": "\\b(?:len|size_of|align_of|offset_of|type_of|va_count|va_arg)\\b"
+                }
+            ]
+        },
+        "use-statements": {
+            "patterns": [
+                {
+                    "name": "meta.use.aliased.mach",
+                    "match": "\\b(use)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(:)\\s*([A-Za-z_][A-Za-z0-9_.]*)",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.declaration.mach"
+                        },
+                        "2": {
+                            "name": "entity.name.namespace.alias.mach"
+                        },
+                        "3": {
+                            "name": "punctuation.separator.mach"
+                        },
+                        "4": {
+                            "name": "entity.name.namespace.mach"
+                        }
+                    }
+                },
+                {
+                    "name": "meta.use.simple.mach",
+                    "match": "\\b(use)\\s+([A-Za-z_][A-Za-z0-9_.]*)",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.declaration.mach"
+                        },
+                        "2": {
+                            "name": "entity.name.namespace.mach"
+                        }
+                    }
                 }
             ]
         },
