@@ -8,6 +8,9 @@
             "include": "#comments"
         },
         {
+            "include": "#strings"
+        },
+        {
             "include": "#characters"
         },
         {
