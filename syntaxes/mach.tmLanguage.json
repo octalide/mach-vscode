@@ -164,7 +164,7 @@
             "patterns": [
                 {
                     "name": "support.function.intrinsic.mach",
-                    "match": "\\b(?:len|size_of|align_of|offset_of|type_of|va_count|va_arg)\\b"
+                    "match": "\\b(?:size_of|align_of|offset_of|type_of|va_count|va_arg)\\b"
                 }
             ]
         },
