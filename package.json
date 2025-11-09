@@ -25,6 +25,11 @@
         "configuration": "./language-configuration.json"
       }
     ],
+    "breakpoints": [
+      {
+        "language": "mach"
+      }
+    ],
     "grammars": [
       {
         "language": "mach",
