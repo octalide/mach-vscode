@@ -2,7 +2,7 @@
   "name": "mach-vscode",
   "displayName": "Mach",
   "description": "Language support for Mach - a statically-typed, compiled programming language designed to be simple, fast, verbose, and intuitive",
-  "version": "3.7.0",
+  "version": "3.8.0",
   "publisher": "octalide",
   "engines": {
     "vscode": "^1.95.0"
