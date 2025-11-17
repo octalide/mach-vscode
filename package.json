@@ -25,8 +25,8 @@
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "light": "./mach_48_pr.png",
-          "dark": "./mach_48_pr.png"
+          "light": "./mach_file_icon.svg",
+          "dark": "./mach_file_icon.svg"
         }
       }
     ],
