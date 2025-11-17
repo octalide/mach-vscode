@@ -25,84 +25,13 @@
         "configuration": "./language-configuration.json"
       }
     ],
-    "breakpoints": [
-      {
-        "language": "mach"
-      }
-    ],
     "grammars": [
       {
         "language": "mach",
         "scopeName": "source.mach",
         "path": "./syntaxes/mach.tmLanguage.json"
       }
-    ],
-    "commands": [
-      {
-        "command": "mach.restartServer",
-        "title": "Mach: Restart Language Server"
-      },
-      {
-        "command": "mach.build",
-        "title": "Mach: Build Project"
-      },
-      {
-        "command": "mach.run",
-        "title": "Mach: Run Project"
-      },
-      {
-        "command": "mach.debug",
-        "title": "Mach: Debug Project"
-      }
-    ],
-    "configuration": {
-      "title": "Mach",
-      "properties": {
-        "mach.lspPath": {
-          "type": "string",
-          "default": "",
-          "description": "Absolute path to the mach-lsp executable. Leave empty to use the sibling mach-lsp build in this workspace."
-        },
-        "mach.buildCommand": {
-          "type": "string",
-          "default": "make",
-          "description": "Command used to build the active Mach workspace. Executed in the workspace root."
-        },
-        "mach.runCommand": {
-          "type": "string",
-          "default": "make run",
-          "description": "Command used to run the active Mach workspace. Executed in the workspace root."
-        },
-        "mach.debug.program": {
-          "type": "string",
-          "default": "out/bin/app",
-          "description": "Relative path (from workspace root) to the executable that should be launched when debugging."
-        },
-        "mach.debug.adapter": {
-          "type": "string",
-          "enum": [
-            "cppdbg",
-            "codelldb",
-            "gdb-terminal"
-          ],
-          "default": "cppdbg",
-          "description": "Debugger integration used by Mach: Debug Project (cppdbg, codelldb, or gdb-terminal)."
-        },
-        "mach.debug.gdbPath": {
-          "type": "string",
-          "default": "gdb",
-          "description": "Path to the GDB executable used for debugging Mach programs."
-        },
-        "mach.debug.preLaunchBuild": {
-          "type": "boolean",
-          "default": true,
-          "description": "Run the configured build command before starting a debug session."
-        }
-      }
-    }
-  },
-  "dependencies": {
-    "vscode-languageclient": "^9.0.1"
+    ]
   },
   "repository": {
     "type": "git",
