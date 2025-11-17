@@ -1,7 +1,7 @@
 {
   "name": "mach-vscode",
   "displayName": "Mach",
-  "description": "Language support for Mach - a statically typed, compiled systems language with explicit control and C interoperability",
+  "description": "Language support for Mach - a statically-typed, compiled programming language designed to be simple, fast, verbose, and intuitive",
   "version": "3.7.0",
   "publisher": "octalide",
   "engines": {
@@ -10,6 +10,7 @@
   "categories": [
     "Programming Languages"
   ],
+  "icon": "mach_128.png",
   "main": "./extension.js",
   "contributes": {
     "languages": [
@@ -22,7 +23,11 @@
         "extensions": [
           ".mach"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./mach_48_pr.png",
+          "dark": "./mach_48_pr.png"
+        }
       }
     ],
     "grammars": [
