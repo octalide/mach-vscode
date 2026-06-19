@@ -5,6 +5,9 @@
             "include": "#comments"
         },
         {
+            "include": "#decorators"
+        },
+        {
             "include": "#strings"
         },
         {
@@ -47,6 +50,33 @@
                 {
                     "name": "comment.line.number-sign.mach",
                     "match": "#.*$"
+                }
+            ]
+        },
+        "decorators": {
+            "patterns": [
+                {
+                    "name": "meta.decorator.mach",
+                    "begin": "`",
+                    "end": "`",
+                    "beginCaptures": {
+                        "0": { "name": "punctuation.definition.decorator.begin.mach" }
+                    },
+                    "endCaptures": {
+                        "0": { "name": "punctuation.definition.decorator.end.mach" }
+                    },
+                    "patterns": [
+                        {
+                            "name": "keyword.other.decorator.mach",
+                            "match": "\\b(?:symbol|library|inline|align|section)\\b"
+                        },
+                        {
+                            "include": "#strings"
+                        },
+                        {
+                            "include": "#numbers"
+                        }
+                    ]
                 }
             ]
         },
@@ -239,7 +269,7 @@
             "patterns": [
                 {
                     "name": "keyword.control.compiletime.mach",
-                    "match": "\\$(?:if|or)\\b"
+                    "match": "\\$(?:if|or|each)\\b"
                 },
                 {
                     "name": "support.function.compiletime.mach",
