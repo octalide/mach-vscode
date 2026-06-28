@@ -10,7 +10,7 @@ Mach is a statically typed, compiled systems language with explicit control over
 - **C interoperability** - Data layout and calling conventions align with the platform C ABI
 - **Minimal core** - Small, orthogonal feature set that composes well
 
-For the complete language specification, see the `doc/language/` directory in the [mach](https://github.com/octalide/mach) repository (`grammar.md` is the authoritative syntax reference).
+For the complete language specification, see the `doc/language/` directory in the [mach](https://github.com/briar-systems/mach) repository (`grammar.md` is the authoritative syntax reference).
 
 ## Features
 - Syntax highlighting kept in sync with the current compiler keywords, intrinsics, and operators
@@ -28,11 +28,11 @@ For the complete language specification, see the `doc/language/` directory in th
 ## Getting Started
 1. Install the extension from the Marketplace or install a packaged `.vsix` in VS Code
 2. Open a `.mach` source file - syntax highlighting and comment toggling work out-of-the-box
-3. Pair with the `mach` compiler from the [mach](https://github.com/octalide/mach) repository
+3. Pair with the `mach` compiler from the [mach](https://github.com/briar-systems/mach) repository
 
 ## Contributing
-- Report syntax gaps or highlighting bugs in the [mach-vscode](https://github.com/octalide/mach-vscode) repository
-- For language design issues, see the main [mach](https://github.com/octalide/mach) repository
+- Report syntax gaps or highlighting bugs in the [mach-vscode](https://github.com/briar-systems/mach-vscode) repository
+- For language design issues, see the main [mach](https://github.com/briar-systems/mach) repository
 - When publishing, remember to bump the version in `package.json` and run:
 
 ```bash
